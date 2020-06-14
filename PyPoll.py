@@ -39,40 +39,58 @@ with open(file_to_load) as election_data:
           # this tallies votes for each candidate
         candidate_votes[candidate_name] += 1
 
-# the total number of votes cast
-print(total_votes)
+with open(file_to_save, "w") as txt_file:
+    # Print the final vote count to the terminal.
+    election_results = (
+        f"\nElection Results\n"
+        f"-------------------------\n"
+        f"Total Votes: {total_votes:,}\n"
+        f"-------------------------\n")
+    print(election_results, end="")
+    # Save the final vote count to the text file.
+    txt_file.write(election_results)
 
-# A complete list of candidates who received votes
-print(candidate_options)
-print(candidate_votes)
+    # the total number of votes cast
+    #print(total_votes)
 
-# The percentage of votes each candidate won
-# iterate through candidate list
-for candidate in candidate_votes:
-    # retrieve number of votes for each candidate
-    votes = candidate_votes[candidate]
+    # A complete list of candidates who received votes
+    #print(candidate_options)
+    #print(candidate_votes)
 
-    # calculate the percentage of vote
-    vote_percentage = int(votes)/int(total_votes) * 100
+    # The percentage of votes each candidate won
+    # iterate through candidate list
+    for candidate in candidate_votes:
+        # retrieve number of votes for each candidate
+        votes = candidate_votes[candidate]
 
-    # print the candidate name and vote count
-    print(f"{candidate} received {vote_percentage:.1f}% of the vote.")
-    print(f"{candidate}: {vote_percentage:.1f}% {votes:,}\n")
+        # calculate the percentage of vote
+        vote_percentage = int(votes)/int(total_votes) * 100
 
-# 5. The winner of the election based on popular vote
+        # print the candidate name and vote count
+        candidate_results = (
+            f"{candidate}: {vote_percentage:.1f}% ({votes:,})\n")
 
-    if votes > winning_count and vote_percentage > winning_percentage:
-        winning_count = votes
-        winning_percentage = vote_percentage
-        winning_candidate = candidate
+        print(candidate_results)
 
-winning_candidate_summary = (
-    f"-------------------------------\n"
-    f"Winner: {winning_candidate}\n"
-    f"Winning Vote Count: {winning_count:,}\n"
-    f"Winning Percentage: {winning_percentage:.1f}%\n"
-    f"-------------------------------\n"
-)
-print(winning_candidate_summary)
+        txt_file.write(candidate_results)
 
-    
+        #print(f"{candidate} received {vote_percentage:.1f}% of the vote.")
+        ##print(f"{candidate}: {vote_percentage:.1f}% {votes:,}\n")
+
+    # 5. The winner of the election based on popular vote
+
+        if votes > winning_count and vote_percentage > winning_percentage:
+            winning_count = votes
+            winning_percentage = vote_percentage
+            winning_candidate = candidate
+
+     #print(winning_candidate_summary)
+  
+    winning_candidate_summary = (
+        f"----------------------------\n"
+        f"Winner: {winning_candidate}\n"
+        f"Winning Vote: {winning_count:,}\n"
+        f"Winning Percentage: {winning_percentage:.1f}\n"
+    )
+    print(winning_candidate_summary)
+    txt_file.write(winning_candidate_summary)
