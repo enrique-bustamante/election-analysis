@@ -79,14 +79,14 @@ with open(file_to_save, "w") as txt_file:
       for county in county_votes:
 
         # tallies the vote count for each county in a local value
-        votes = county_votes[county]
+        c_votes = county_votes[county]
 
         # calculates the vote percentage by county in a local value
-        vote_percentage = int(votes)/int(total_votes) * 100
+        c_vote_percentage = int(c_votes)/int(total_votes) * 100
 
         # sets local variable to disply the county name, vote count, and vote percentage
         county_results = (
-          f"{county}: {vote_percentage:.1f}% ({votes}"
+          f"{county}: {c_vote_percentage:.1f}% ({c_votes})"
         )
 
         # print the county results
@@ -96,14 +96,14 @@ with open(file_to_save, "w") as txt_file:
         txt_file.write(county_results)
 
         # find out the county with the highest participation
-        if votes > high_county_vote:
-          high_county_vote = votes
+        if c_votes > high_county_vote:
+          high_county_vote = c_votes
           county_highest_vote = county
 
       # set variable for info to print
       highest_county = (
         f"\n-------------------------\n"
-        f"Largest county turnout: {county}\n"
+        f"Largest county turnout: {county_highest_vote}\n"
         f"-------------------------\n"
       )
 
