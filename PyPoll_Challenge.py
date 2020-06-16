@@ -86,7 +86,7 @@ with open(file_to_save, "w") as txt_file:
 
         # sets local variable to disply the county name, vote count, and vote percentage
         county_results = (
-          f"{county}: {c_vote_percentage:.1f}% ({c_votes})"
+          f"{county}: {c_vote_percentage:.1f}% ({c_votes})\n"
         )
 
         # print the county results
@@ -124,7 +124,7 @@ with open(file_to_save, "w") as txt_file:
 
         # print the candidate name and vote count
         candidate_results = (
-            f"{candidate}: {vote_percentage:.1f}% ({votes:,})")
+            f"{candidate}: {vote_percentage:.1f}% ({votes:,})\n")
 
         # print the candidate results
         print(candidate_results)
