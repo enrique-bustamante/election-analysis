@@ -1,6 +1,24 @@
-voting_data = [{"county":"Arapahoe", "registered_voters": 422829},
-{"county":"Denver", "registered_voters": 463353},
-{"county":"Jefferson", "registered_voters": 432438}]
 
-for dictionary in voting_data:
-    print(f"{dictionary['county']} county has {dictionary['registered_voters']:,} registered voters")
+#%%
+# Variables
+exampleString = 'Hello world'
+exampleString2 = "Hello world"
+exampleString3 = "Hello again"
+exampleString4 = "Hi"
+
+myName = "Enrique Bustamante"
+myAgeThatIWantToBe = 41
+myBirthday = '4/4/1979'
+
+#%%
+myIntroduction = f"Hello, my name is {myName}. I am {myAgeThatIWantToBe} and I was born on {myBirthday}." # string interpolation
+print(myIntroduction)
+
+
+# %%
+
+# lists
+listOfDifferentTypes = [0, 1.0 , 'some string', [1,2,3]]
+type(listOfDifferentTypes)
+
+
